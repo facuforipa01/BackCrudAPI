@@ -12,14 +12,14 @@ exports.getAllPosts = async (req, res) => {
     catch (error) {
         console.error(error);
         res.status(500).json({
-            message: 'Error al obtener los usuarios',
+            message: 'Error al obtener las Publicaciones',
         })
     }
 }
 
 exports.createPost = async (req, res) => {
     try {
-        const { idUser, descripcion, fecha } = req.body
+        const { descripcion, fecha, hora, imagen, ubicacion } = req.body
         const post = await Post.create(req.body);
         res.status(201).json({
             ok: true,
@@ -37,14 +37,14 @@ exports.createPost = async (req, res) => {
 exports.updatePost = async (req, res) => {
    
     const {id} = req.params
-    const {idUser, descripcion, fecha} = req.body
+    const {descripcion, fecha, hora, imagen, ubicacion } = req.body
 
     try {
 
         const post = await post.findOne({id});
 
         if(post){
-            post.update({idUser, descripcion, fecha})
+            post.update({descripcion, fecha, hora, imagen, ubicacion })
         }
         else{
             res.status(404).json({
