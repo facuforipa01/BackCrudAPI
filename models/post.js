@@ -10,13 +10,13 @@ Post.init({
         primaryKey: true,
         autoIncrement: true
     },
-   /*// idUser: {
+    userId: {
         type: DataTypes.INTEGER,
         forignKey: true, //no se si se define asi una clave foranea xd
         allowNull: false, // si o si la tiene que haber hecho alguien
         unique: false //pueden haber muchos posts de un mismo user
         //idUser es la clave primaria en usuarios que tiene que estar vinculada con posteos
-    },*/
+    },
     descripcion: {
         type: DataTypes.STRING,
         allowNull: true

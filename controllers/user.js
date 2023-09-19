@@ -41,7 +41,7 @@ exports.updateUser = async (req, res) => {
 
     try {
 
-        const user = await User.findOne({id});
+        const user = await User.findOne({where: {id: id}});
 
         if(user){
             user.update({username, password, email})

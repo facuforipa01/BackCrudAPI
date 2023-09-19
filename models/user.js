@@ -32,7 +32,7 @@ User.init({
     });
 
         User.hasMany(Post, { foreignKey: "userId", sourceKey: "id",})
-        Post.belongsTo(User, { foreignKey: "userId", tergetKey: "id", })
+        Post.belongsTo(User, { foreignKey: "userId", targetKey: "id", })
 
 User.sync()
     .then(() => {
