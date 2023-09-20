@@ -19,7 +19,7 @@ exports.getAllPosts = async (req, res) => {
 
 exports.createPost = async (req, res) => {
     try {
-        const { descripcion, fecha, hora, imagen, ubicacion } = req.body
+        const { descripcion, fecha, imagen, ubicacion } = req.body
         const post = await Post.create(req.body);
         res.status(201).json({
             ok: true,
@@ -37,14 +37,14 @@ exports.createPost = async (req, res) => {
 exports.updatePost = async (req, res) => {
    
     const {id} = req.params
-    const {descripcion, fecha, hora, imagen, ubicacion } = req.body
+    const {descripcion, fecha, imagen, ubicacion } = req.body
 
     try {
 
-        const post = await post.findOne({id});
+        const post = await Post.findOne({where: {id: id}});
 
         if(post){
-            post.update({descripcion, fecha, hora, imagen, ubicacion })
+            post.update({descripcion, fecha, imagen, ubicacion })
         }
         else{
             res.status(404).json({
