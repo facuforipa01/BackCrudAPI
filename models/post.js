@@ -28,6 +28,11 @@ Post.init({
         type: DataTypes.STRING,
         allowNull: true,
         unique: false,
+    },
+    userId:{
+        type :DataTypes.INTEGER ,
+        foreignKey: true,
+        allowNull :false
     }
 
 },

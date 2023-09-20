@@ -1,4 +1,5 @@
 const User = require('../models/user')
+const Post = require('../models/post')
 
 exports.getAllUsers = async (req, res) => {
 
@@ -32,6 +33,24 @@ exports.createUser = async (req, res) => {
         })
 
     }
+}
+
+exports.getUserPosts = async(req, res)=>{
+    try {
+        const {id} = req.params
+        const user = await User.findAll({
+            where: {id: id},
+            include: {
+                model : Post
+            }
+        })
+        res.status(200).json({
+            msg: "posteos del usuario",
+            user
+        })} catch (error){
+        console.log(error)
+    }
+    
 }
 
 exports.updateUser = async (req, res) => {

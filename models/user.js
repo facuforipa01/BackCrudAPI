@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
-//const Post = require('./post');
+const Post = require('./post');
 
 
 class User extends Model { }
@@ -31,8 +31,15 @@ User.init({
         modelName: 'User'
     });
 
-       // User.hasMany(Post, { foreignKey: "userId", sourceKey: "id",})
-       // Post.belongsTo(User, { foreignKey: "userId", targetKey: "id", })
+    Post.belongsTo(User, {
+        foreignKey: 'userId', 
+       })
+       
+       User.hasMany(Post, {
+         foreignKey: 'userId'
+        })
+
+      
 
 User.sync()
     .then(() => {
