@@ -1,5 +1,6 @@
 const Post = require('../models/post')
 
+
 exports.getAllPosts = async (req, res) => {
 
     try {
